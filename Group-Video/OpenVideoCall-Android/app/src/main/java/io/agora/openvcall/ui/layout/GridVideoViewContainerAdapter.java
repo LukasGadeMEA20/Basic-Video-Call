@@ -7,12 +7,15 @@ import android.util.DisplayMetrics;
 import android.view.SurfaceView;
 import android.view.ViewGroup;
 import android.view.WindowManager;
+import android.widget.GridLayout;
+import android.widget.LinearLayout;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.util.HashMap;
 
+import io.agora.openvcall.R;
 import io.agora.propeller.UserStatusData;
 
 public class GridVideoViewContainerAdapter extends VideoViewAdapter {
@@ -34,26 +37,15 @@ public class GridVideoViewContainerAdapter extends VideoViewAdapter {
             windowManager.getDefaultDisplay().getMetrics(outMetrics);
 
             int count = uids.size();
-            int DividerX = 1;
+            int DividerX = count;
             int DividerY = 1;
 
-            if (count == 2) {
-                DividerY = 2;
-            } else if (count >= 3) {
-                DividerX = getNearestSqrt(count);
-                DividerY = (int) Math.ceil(count * 1.f / DividerX);
-            }
-
             int width = outMetrics.widthPixels;
-            int height = outMetrics.heightPixels;
+            int height = outMetrics.heightPixels / 4;
 
-            if (width > height) {
-                mItemWidth = width / DividerY;
-                mItemHeight = height / DividerX;
-            } else {
-                mItemWidth = width / DividerX;
-                mItemHeight = height / DividerY;
-            }
+            mItemWidth = width / DividerX;
+            mItemHeight = height / DividerY;
+
         }
     }
 

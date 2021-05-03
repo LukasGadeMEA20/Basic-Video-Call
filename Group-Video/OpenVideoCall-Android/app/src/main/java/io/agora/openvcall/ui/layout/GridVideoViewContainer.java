@@ -59,7 +59,7 @@ public class GridVideoViewContainer extends RecyclerView {
 
         this.setAdapter(mGridVideoViewContainerAdapter);
 
-        int orientation = isLandscape ? RecyclerView.HORIZONTAL : RecyclerView.VERTICAL;
+        int orientation = isLandscape ? RecyclerView.VERTICAL : RecyclerView.HORIZONTAL;
 
         int count = uids.size();
         if (count <= 2) { // only local full view or or with one peer
